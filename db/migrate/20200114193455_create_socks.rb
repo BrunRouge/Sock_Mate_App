@@ -5,7 +5,6 @@ class CreateSocks < ActiveRecord::Migration[5.2]
       t.integer :price
       t.string :textile
       t.string :color
-
       t.references :user, foreign_key: true
 
       t.timestamps
