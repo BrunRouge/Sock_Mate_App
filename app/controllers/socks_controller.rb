@@ -4,7 +4,7 @@ class SocksController < ApplicationController
   end
 
   def show
-    @sock = set_sock
+    @sock = find_sock
   end
 
   def new
@@ -12,9 +12,8 @@ class SocksController < ApplicationController
   end
 
   def create
-    @sock = Sock.new(sock_params)
-    @sock['user_id'] = current_user.id
-    if @sock.save
+    @sock = Sock.new(extended_sock_params)
+    if @sock.save!
       redirect_to sock_path(@sock)
     else
       render :new
@@ -22,11 +21,11 @@ class SocksController < ApplicationController
   end
 
   def edit
-    @sock = set_sock
+    @sock = find_sock
   end
 
   def update
-    @sock = Sock.find(set_sock.id)
+    @sock = Sock.find(find_sock.id)
     if @sock.update(sock_params)
       redirect_to sock_path(@sock)
     else
@@ -35,7 +34,7 @@ class SocksController < ApplicationController
   end
 
   def destroy
-    @sock = Sock.find(set_sock.id)
+    @sock = Sock.find(find_sock.id)
     @sock.destroy
 
     redirect_to socks_path
@@ -43,11 +42,15 @@ class SocksController < ApplicationController
 
   private
 
+  def extended_sock_params
+    sock_params.merge(user_id: current_user.id)
+  end
+
   def sock_params
     params.require(:sock).permit(:size, :price, :textile, :color)
   end
 
-  def set_sock
+  def find_sock
     @sock = Sock.find(params[:id])
   end
 end

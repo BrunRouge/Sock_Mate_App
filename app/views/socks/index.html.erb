@@ -5,6 +5,7 @@
     <p><%= sock.color %></p>
     <p><%= sock.size %></p>
     <p><%= sock.price %></p>
+    <p><%= link_to 'Edit sock', edit_sock_path(sock), method: :get%> </p>
   <% end %>
   <p><%= link_to 'Create new sock', new_sock_path(@sock), method: :get%> </p>
 </div>
