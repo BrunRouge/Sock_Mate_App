@@ -26,6 +26,12 @@ class SocksController < ApplicationController
   end
 
   def update
+    @sock = Sock.find(set_sock.id)
+    if @sock.update(sock_params)
+      redirect_to sock_path(@sock)
+    else
+      render :new
+    end
   end
 
   def destroy
