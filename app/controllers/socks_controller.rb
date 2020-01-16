@@ -35,6 +35,10 @@ class SocksController < ApplicationController
   end
 
   def destroy
+    @sock = Sock.find(set_sock.id)
+    @sock.destroy
+
+    redirect_to socks_path
   end
 
   private
