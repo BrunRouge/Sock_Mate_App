@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Socks for sale!</h1>
+  <% @socks.each do |sock| %>
+    <h2><%= sock.textile %></h2>
+    <p><%= sock.color %></p>
+    <p><%= sock.size %></p>
+    <p><%= sock.price %></p>
+  <% end %>
+</div>
