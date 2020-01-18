@@ -7,10 +7,6 @@ class BookingsController < ApplicationController
     @booking = find_booking
   end
 
-  def new
-    @booking = Booking.new
-  end
-
   def create
     @booking = Booking.new(extended_booking_params)
     if @booking.save!
@@ -22,7 +18,11 @@ class BookingsController < ApplicationController
 
   def book
     @sock = Sock.find(params[:sock_id])
-    @sock.user_id = current_user.id
+    @booking = create
+
+
+
+    @sock.user_id = current_user.id # Transfer of ownership
 
     redirect_to sock_path(@sock)
   end
