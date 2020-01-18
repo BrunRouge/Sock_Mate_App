@@ -8,6 +8,5 @@
   <% if @owner.id != current_user.id %>
   <p><%= link_to "Purchase this wonderful piece of clothing", sock_bookings_path(@sock), method: :post, data: { confirm: "Confirm acquisition of item" } %></p>
   <% end %>
-  <p><%= link_to "Delete", sock_path(@sock), method: :delete, data: { confirm: "Are you sure?" } %></p>
   <p><%= link_to 'Back to all socks', socks_path, method: :get%> </p>
 </div>
