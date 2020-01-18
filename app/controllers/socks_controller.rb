@@ -44,7 +44,7 @@ class SocksController < ApplicationController
   private
 
   def extended_sock_params
-    sock_params.merge(user_id: current_user.id)
+    final_params = sock_params.merge(user_id: current_user.id)
   end
 
   def sock_params
