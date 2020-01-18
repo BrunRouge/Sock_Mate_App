@@ -19,4 +19,18 @@ class BookingsController < ApplicationController
       render :new
     end
   end
+
+  private
+
+  def extended_booking_params
+    booking_params.merge(user_id: current_user.id)
+  end
+
+  def booking_params
+    params.require(:booking).permit(:)
+  end
+
+  def find_booking
+    @booking = Booking.find(params[:id])
+  end
 end
