@@ -8,11 +8,11 @@ class SocksController < ApplicationController
       @my_socks = []
       @socks = Sock.all
     end
-
   end
 
   def show
     @sock = find_sock
+    @owner = @sock.user
   end
 
   def new

@@ -1,9 +1,13 @@
 <div class="container">
-  <h2>Look at this sock:</h2>
+  <h1>Look at this sock!</h1>
+  <h2>Owned by: <%= @owner.email %></h2>
   <p><%= @sock.textile %></p>
   <p><%= @sock.color %></p>
   <p><%= @sock.size %></p>
   <p><%= @sock.price %></p>
-  <%= link_to "Delete", sock_path(@sock), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% if @owner.id != current_user.id %>
+  <p><%= link_to "Purchase this wonderful piece of clothing", sock_bookings_path(@sock), method: :post, data: { confirm: "Confirm acquisition of item" } %></p>
+  <% end %>
+  <p><%= link_to "Delete", sock_path(@sock), method: :delete, data: { confirm: "Are you sure?" } %></p>
   <p><%= link_to 'Back to all socks', socks_path, method: :get%> </p>
 </div>
