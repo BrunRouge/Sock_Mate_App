@@ -41,6 +41,13 @@ class SocksController < ApplicationController
     end
   end
 
+  def status_hide
+    @sock = find_sock
+    @sock.status = "hidden"
+    @sock.save!
+    redirect_to socks_path
+  end
+
   private
 
   def extended_sock_params

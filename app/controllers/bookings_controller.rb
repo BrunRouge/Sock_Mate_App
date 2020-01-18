@@ -14,7 +14,6 @@ class BookingsController < ApplicationController
     @sock.user_id = current_user.id # Transfer of ownership
     @sock.save!
     redirect_to sock_path(@sock)
-
   end
 
   private
