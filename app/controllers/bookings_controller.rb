@@ -20,6 +20,13 @@ class BookingsController < ApplicationController
     end
   end
 
+  def book
+    @sock = Sock.find(params[:sock_id])
+    @sock.user_id = current_user.id
+
+    redirect_to sock_path(@sock)
+  end
+
   private
 
   def extended_booking_params

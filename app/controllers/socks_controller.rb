@@ -12,6 +12,7 @@ class SocksController < ApplicationController
   end
 
   def show
+    @user = current_user
     @sock = find_sock
   end
 
