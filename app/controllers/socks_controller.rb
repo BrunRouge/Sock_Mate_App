@@ -1,7 +1,14 @@
 class SocksController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   def index
-    @socks = Sock.all
+    if current_user
+      @my_socks = current_user.socks
+      @socks = Sock.all - @my_socks
+    else
+      @my_socks = []
+      @socks = Sock.all
+    end
+
   end
 
   def show
