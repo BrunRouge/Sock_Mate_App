@@ -1,10 +1,11 @@
 <div class="container">
   <h1>Look at this sock!</h1>
-  <h2>Owned by: <%= @user.email %></h2>
+  <h2>Owned by: <%= @owner.email %></h2>
   <p><%= @sock.textile %></p>
   <p><%= @sock.color %></p>
   <p><%= @sock.size %></p>
   <p><%= @sock.price %></p>
+
   <%= link_to "Delete", sock_path(@sock), method: :delete, data: { confirm: "Are you sure?" } %>
   <p><%= link_to 'Back to all socks', socks_path, method: :get%> </p>
 </div>
