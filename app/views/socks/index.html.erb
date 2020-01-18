@@ -1,5 +1,14 @@
 <div class="container">
   <h1>Socks for sale!</h1>
+
+  <% @my_socks.each do |sock| %>
+  <h2><%= sock.textile %></h2>
+  <p><%= sock.color %></p>
+  <p><%= sock.size %></p>
+  <p><%= sock.price %></p>
+  <p><%= link_to 'Edit sock', edit_sock_path(sock), method: :get%> </p>
+  <% end %>
+
   <% @socks.each do |sock| %>
     <h2><%= sock.textile %></h2>
     <p><%= sock.color %></p>
@@ -7,15 +16,6 @@
     <p><%= sock.price %></p>
   <% end %>
 
-
- <% @my_socks.each do |sock| %>
-  <h2><%= sock.textile %></h2>
-  <p><%= sock.color %></p>
-  <p><%= sock.size %></p>
-  <p><%= sock.price %></p>
-  <p><%= link_to 'Edit sock', edit_sock_path(sock), method: :get%> </p>
-
-<% end %>
 
   <p><%= link_to 'Create new sock', new_sock_path(@sock), method: :get%> </p>
 </div>
