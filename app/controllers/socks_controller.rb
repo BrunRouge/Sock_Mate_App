@@ -8,7 +8,6 @@ class SocksController < ApplicationController
       @my_socks = []
       @socks = Sock.all
     end
-
   end
 
   def show

@@ -9,22 +9,12 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(extended_booking_params)
-    if @booking.save!
-      redirect_to booking_path(@booking)
-    else
-      render :new
-    end
-  end
-
-  def book
+    @booking.save!
     @sock = Sock.find(params[:sock_id])
-    @booking = create
-
-
-
     @sock.user_id = current_user.id # Transfer of ownership
-
+    @sock.save!
     redirect_to sock_path(@sock)
+
   end
 
   private
@@ -34,7 +24,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:sock_id)
+    params.permit(:sock_id)
   end
 
   def find_booking
