@@ -1,6 +1,14 @@
 class SocksController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   def index
-    @socks = Sock.all
+    if current_user
+      @my_socks = current_user.socks
+      @socks = Sock.all - @my_socks
+    else
+      @my_socks = []
+      @socks = Sock.all
+    end
+
   end
 
   def show
@@ -13,7 +21,7 @@ class SocksController < ApplicationController
 
   def create
     @sock = Sock.new(extended_sock_params)
-    if @sock.save!
+    if @sock.save
       redirect_to sock_path(@sock)
     else
       render :new
@@ -26,7 +34,7 @@ class SocksController < ApplicationController
 
   def update
     @sock = Sock.find(find_sock.id)
-    if @sock.update!(sock_params)
+    if @sock.update(sock_params)
       redirect_to sock_path(@sock)
     else
       render :new
