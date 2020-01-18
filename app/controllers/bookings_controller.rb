@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:)
+    params.require(:booking).permit(:sock_id)
   end
 
   def find_booking
