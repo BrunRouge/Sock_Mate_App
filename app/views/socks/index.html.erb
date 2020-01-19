@@ -1,31 +1,33 @@
 <div class="container">
-  <h1>Socks for sale!</h1>
-    <div class="sock_card">
-      <% @my_socks.each do |sock| %>
-        <h3><strong>Textile</strong> : <%= sock.textile %></h3>
-        <p><strong>Color</strong> : <%= sock.color %></p>
-        <p><strong>Size</strong> : <%= sock.size %></p>
-        <p><strong>Price</strong> : <%= sock.price %></p>
-        <button type="button" class="btn_small">  <%= link_to 'Edit sock', edit_sock_path(sock), method: :get%> </button>
-      <br>
-      <br>
-    </div>
+  <h1 align="center">Socks for sale!</h1><br>
+    <div class="row row-cols-4">
+       <% @my_socks.each do |sock| %>
+          <div class="card">
+            <H4 align="center"><strong>Textile</strong> : <%= sock.textile %></H4>
+            <li><strong>Color</strong> : <%= sock.color %></li>
+            <li><strong>Size</strong> : <%= sock.size %></li>
+            <li><strong>Price</strong> : <%= sock.price %></li><br>
+            <div align="center">
+                <img align="center" src="http://pngimg.com/uploads/socks/socks_PNG8261.png" alt="sock_image" height="96" width="96">
+            </div><br>
+            <button type="button" class="btn_small">  <%= link_to 'Edit sock', edit_sock_path(sock), method: :get%> </button>
+          </div><br>
       <% end %>
-
       <br>
-      <br>
-      <br>
-
-      <div class="sock_card">
+      <div class="card-list">
         <% @socks.each do |sock| %>
-          <h3><strong>Textile</strong> : <%= sock.textile %></h3>
-          <p><strong>Color</strong> : <%= sock.color %></p>
-          <p><strong>Size</strong> : <%= sock.size %></p>
-          <p><strong>Price</strong> : <%= sock.price %></p>
+          <h4><strong>Textile</strong> : <%= sock.textile %></h4>
+          <li><strong>Color</strong> : <%= sock.color %></li>
+          <li><strong>Size</strong> : <%= sock.size %></li>
+          <li><strong>Price</strong> : <%= sock.price %></li>
         <% end %>
+        <br>
       </div>
-    </div>
   </div>
+</div>
+
+<br>
+<br>
 
  <button type="button" class="block"> <%= link_to 'Create new sock', new_sock_path(@sock), method: :get%></button>
 
