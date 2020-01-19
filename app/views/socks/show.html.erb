@@ -5,6 +5,9 @@
   <p><%= @sock.color %></p>
   <p><%= @sock.size %></p>
   <p><%= @sock.price %></p>
+  <% if @owner.id == current_user.id %>
+  <p><%= link_to "Remove this sock from marketplace", status_hide_sock_path(@sock), method: :patch, data: { confirm: "Confirm removal of sock from marketplace" } %></p>
+  <% end %>
   <% if @owner.id != current_user.id %>
   <p><%= link_to "Purchase this wonderful piece of clothing", sock_bookings_path(@sock), method: :post, data: { confirm: "Confirm acquisition of item" } %></p>
   <% end %>

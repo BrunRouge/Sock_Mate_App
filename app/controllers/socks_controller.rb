@@ -41,10 +41,17 @@ class SocksController < ApplicationController
     end
   end
 
+  def status_hide
+    @sock = find_sock
+    @sock.status = "hidden"
+    @sock.save!
+    redirect_to socks_path
+  end
+
   private
 
   def extended_sock_params
-    sock_params.merge(user_id: current_user.id)
+    final_params = sock_params.merge(user_id: current_user.id)
   end
 
   def sock_params

@@ -6,4 +6,5 @@ class Sock < ApplicationRecord
   validates :color, presence: true
   validates :size, presence: true, numericality: { only_integer: true }
   validates :price, presence: true, numericality: { only_integer: true }
+  validates :status, presence: true
 end
