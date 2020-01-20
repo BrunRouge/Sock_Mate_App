@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :funds, greater_than_or_equal_to: 0
+  validates :funds, numericality: { greater_than_or_equal_to: 0 }
   has_many :socks
   has_many :bookings
 end
