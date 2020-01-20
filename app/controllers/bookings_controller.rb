@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
+    @my_bookings  = current_user.bookings
   end
 
   def show
@@ -9,8 +9,9 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(extended_booking_params)
-    @booking.save!
     @sock = Sock.find(params[:sock_id])
+    @sock.user = @booking.previous_owner # Mark previous owner for booking display
+    @booking.save!
     @sock.user_id = current_user.id # Transfer of ownership
     @sock.save!
     redirect_to sock_path(@sock)
