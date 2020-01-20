@@ -1,4 +1,16 @@
 <div class="container">
   <h1>Transactions</h1>
-  <p>Find me in app/views/bookings/index.html.erb</p>
+    <h3><b>My transactions:</b></h3>
+    <div>
+      <% @my_bookings.each do |booking| %>
+        <h3><strong>Textile</strong> : <%= booking.sock.textile %></h3>
+        <p><strong>Color</strong> : <%= booking.sock.color %></p>
+        <p><strong>Size</strong> : <%= booking.sock.size %></p>
+        <p><strong>Bought from</strong> : <%= booking.previous_owner.email %></p>
+        <p><strong>Price</strong> : <%= booking.sock.price.symbol %> <%= booking.sock.price %></p>
+        <button type="button" class="btn_small">  <%= link_to 'Back to socks', socks_path, method: :get%> </button>
+        <br>
+        <br>
+      <% end %>
+    </div>
 </div>

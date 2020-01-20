@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(extended_booking_params)
     @sock = Sock.find(params[:sock_id])
-    @sock.user.id = @booking.previous_owner_id # Mark previous owner for booking display
+    # @booking.previous_owner = @sock.user  # Mark previous owner for booking display
     @booking.save!
     @sock.user_id = current_user.id # Transfer of ownership
     @sock.save!
