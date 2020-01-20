@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 2020_01_20_161506) do
     t.bigint "sock_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "previousowner"
-    t.integer "sold_for_cents", default: 0, null: false
-    t.string "sold_for_currency", default: "EUR", null: false
+    t.integer "previousowner_id"
+    t.integer "sellprice_cents", default: 0, null: false
+    t.string "sellprice_currency", default: "EUR", null: false
     t.index ["sock_id"], name: "index_bookings_on_sock_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
