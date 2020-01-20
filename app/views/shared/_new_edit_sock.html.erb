@@ -1,11 +1,13 @@
-<%= form_for(@sock) do |f| %>
-  <p><%= f.label :textile %></p>
-  <p><%= f.text_field :textile %></p>
-  <p><%= f.label :color %></p>
-  <p><%= f.text_field :color %></p>
-  <p><%= f.label :size %></p>
-  <p><%= f.text_field :size %></p>
-  <p><%= f.label :price %> in <%= @sock.price.symbol %></p>
-  <p><%= f.text_field :price %></p>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <%= form_for(@sock) do |f| %>
+    <p><%= f.label :textile %></p>
+    <p><%= f.text_field :textile %></p>
+    <p><%= f.label :color %></p>
+    <p><%= f.text_field :color %></p>
+    <p><%= f.label :size %></p>
+    <p><%= f.text_field :size %></p>
+    <p><%= f.label :price %> in <%= @sock.price.symbol %></p>
+    <p><%= f.text_field :price %></p>
+    <%= f.submit %>
+  <% end %>
+</div>
