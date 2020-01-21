@@ -1,19 +1,22 @@
 <div class="container">
-  <h1>Socks for sale!</h1>
-    <div class="sock_card">
-      <% @my_socks.each do |sock| %>
-        <% if sock.status != 'hidden' %>
-          <h3><strong>Textile</strong> : <%= sock.textile %></h3>
-          <p><strong>Color</strong> : <%= sock.color %></p>
-          <p><strong>Size</strong> : <%= sock.size %></p>
-          <p><strong>Price</strong> : <%= sock.price %></p>
-          <button type="button" class="btn_small">  <%= link_to 'Show sock', sock_path(sock), method: :get%> </button>
-          <button type="button" class="btn_small">  <%= link_to 'Edit sock', edit_sock_path(sock), method: :get%> </button>
-          <br>
-          <br>
+  <h1>Marketplace:</h1>
+    <% if @my_socks != [] %>
+      <h3><b>My Socks:</b></h3>
+      <div class="sock_card">
+        <% @my_socks.each do |sock| %>
+          <% if sock.status == 'active' %>
+            <h3><strong>Textile</strong> : <%= sock.textile %></h3>
+            <p><strong>Color</strong> : <%= sock.color %></p>
+            <p><strong>Size</strong> : <%= sock.size %></p>
+            <p><strong>Price</strong> : <%= sock.price.symbol %> <%= sock.price %></p>
+            <button type="button" class="btn_small">  <%= link_to 'Show sock', sock_path(sock), method: :get%> </button>
+            <button type="button" class="btn_small">  <%= link_to 'Edit sock', edit_sock_path(sock), method: :get%> </button>
+            <br>
+            <br>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
       <br>
       <br>
@@ -21,11 +24,14 @@
 
       <div class="sock_card">
         <% @socks.each do |sock| %>
-          <% if sock.status != 'hidden' %>
+          <% if sock.status == 'active' %>
             <h3><strong>Textile</strong> : <%= sock.textile %></h3>
             <p><strong>Color</strong> : <%= sock.color %></p>
             <p><strong>Size</strong> : <%= sock.size %></p>
-            <p><strong>Price</strong> : <%= sock.price %></p>
+            <p><strong>Price</strong> : <%= sock.price.symbol %> <%= sock.price %></p>
+            <button type="button" class="btn_small">  <%= link_to 'Show sock', sock_path(sock), method: :get%> </button>
+            <br>
+            <br>
           <% end %>
         <% end %>
       </div>
