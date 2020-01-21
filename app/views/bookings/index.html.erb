@@ -8,9 +8,22 @@
         <p><strong>Size</strong> : <%= booking.sock.size %></p>
         <p><strong>Bought from</strong> : <%= User.find(booking.previousowner_id).email %></p>
         <p><strong>Bought for</strong> : <%= booking.sellprice.symbol %> <%= booking.sellprice %></p>
-        <button type="button" class="btn_small">  <%= link_to 'Back to socks', socks_path, method: :get%> </button>
         <br>
         <br>
       <% end %>
     </div>
+
+    <div>
+      <h3><b>My sales:</b></h3>
+      <% @my_sales.each do |booking| %>
+        <h3><strong>Textile</strong> : <%= booking.sock.textile %></h3>
+        <p><strong>Color</strong> : <%= booking.sock.color %></p>
+        <p><strong>Size</strong> : <%= booking.sock.size %></p>
+        <p><strong>Sold to</strong> : <%= User.find(booking.user_id).email %></p>
+        <p><strong>Sold for</strong> : <%= booking.sellprice.symbol %> <%= booking.sellprice %></p>
+        <br>
+        <br>
+      <% end %>
+    </div>
+  <button type="button" class="btn_small">  <%= link_to 'Back to socks', socks_path, method: :get%> </button>
 </div>

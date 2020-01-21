@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def index
     @my_bookings  = current_user.bookings
+    @my_sales = Booking.where(previousowner_id: current_user.id)
   end
 
   def show
@@ -36,7 +37,7 @@ class BookingsController < ApplicationController
 
   private
 
-  def payment
+  def payment # Add "Reverse/Rollback payment in case of failing transaction for whatever reason?"
     if current_user.funds >= @sock.price
       current_user.funds -= @sock.price
       @sock.user.funds += @sock.price
@@ -50,6 +51,7 @@ class BookingsController < ApplicationController
 
   def transaction
     @booking.previousowner_id = @sock.user.id  # Mark previous owner for booking display
+    @booking.sold_by =
     @booking.sellprice = @sock.price # Mark transfer price when booking is done (for reference)
     @booking.save!
     @sock.user_id = current_user.id # Transfer of ownership
