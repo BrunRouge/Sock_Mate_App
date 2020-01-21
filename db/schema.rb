@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_20_125428) do
+ActiveRecord::Schema.define(version: 2020_01_20_161506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 2020_01_20_125428) do
     t.bigint "sock_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "previousowner_id"
+    t.integer "sellprice_cents", default: 0, null: false
+    t.string "sellprice_currency", default: "EUR", null: false
     t.index ["sock_id"], name: "index_bookings_on_sock_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -27,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_01_20_125428) do
   create_table "socks", force: :cascade do |t|
     t.integer "size"
     t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "EUR", null: false
     t.string "textile"
     t.string "color"
     t.bigint "user_id"
@@ -45,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_01_20_125428) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "funds_cents", default: 10000, null: false
+    t.string "funds_currency", default: "EUR", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
