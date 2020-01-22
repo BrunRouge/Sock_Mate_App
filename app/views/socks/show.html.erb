@@ -1,19 +1,40 @@
-<div class="container">
-  <h1>Look at this sock!</h1>
-  <h2>Owned by: <%= @owner.email %></h2>
-  <p><%= @sock.textile %></p>
-  <p><%= @sock.color %></p>
-  <p><%= @sock.size %></p>
-  <p><%= @sock.price.symbol %> <%= @sock.price %></p>
-  <% if user_signed_in? %>
-    <% if @owner.id == current_user.id %>
-      <p><button type="button" class="btn_small"> <%= link_to 'Edit sock', edit_sock_path(@sock), method: :get%> </button></p>
-      <p><button type="button" class="btn_small"> <%= link_to "Remove this sock from marketplace", status_hide_sock_path(@sock), method: :patch, data: { confirm: "Confirm removal of sock from marketplace" } %> </button></p>
-    <% end %>
-    <% if @owner.id != current_user.id %>
-      <p><%= link_to "Purchase this wonderful piece of clothing", sock_bookings_path(@sock), method: :post, data: { confirm: "Confirm acquisition of item" } %></p>
-    <% end %>
-  <% end %>
-  <p><%= link_to 'Back to all socks', socks_path, method: :get%> </p>
-</div>
 
+<div class="container">
+  <br>
+  <br>
+    <div class="card text-center">
+      <h1>Look at this sock!</h1>
+    </div>
+    <h5 class="card text-center"; style="font-size:500%">Your lonely socks</h5>
+    <div class="row">
+        <div class="col-6">
+            <div class="card"; class="center" >
+              <div class="card-body">
+                <div class="sock_card">
+                  <%= image_tag "sock_card.png", alt: "Le Wagon", width: 200 %>
+                  <p class="card-text"> This sock belongs to <%= @owner.email %></p>
+                </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Textile : <%= @sock.textile %></li>
+                        <li class="list-group-item">Color : <%= @sock.color %></li>
+                        <li class="list-group-item">Price : <%= @sock.price.symbol %> <%= @sock.price %></li>
+                      </ul>
+                      <div class="card-body">
+                        <% if user_signed_in? %>
+                          <% if @owner.id == current_user.id %>
+                            <p><button type="button" class="btn_small"> <%= link_to 'Edit sock', edit_sock_path(@sock), method: :get%> </button></p>
+                            <p><button type="button" class="btn_small"> <%= link_to "Remove this sock from marketplace", status_hide_sock_path(@sock), method: :patch, data: { confirm: "Confirm removal of sock from marketplace" } %> </button></p>
+                          <% end %>
+                          <% if @owner.id != current_user.id %>
+                            <p><%= link_to "Purchase this wonderful piece of clothing", sock_bookings_path(@sock), method: :post, data: { confirm: "Confirm acquisition of item" } %></p>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    <div class="card-body">
+                      <p><%= link_to 'Back to all socks', socks_path, method: :get%> </p>
+                    </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
