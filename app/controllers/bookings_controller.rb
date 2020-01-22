@@ -50,8 +50,7 @@ class BookingsController < ApplicationController
   end
 
   def transaction
-    @booking.previousowner_id = @sock.user.id  # Mark previous owner for booking display
-    @booking.sold_by =
+    @booking.previousowner_id = @sock.user.id  # Mark previous owner for purchasing/selling display
     @booking.sellprice = @sock.price # Mark transfer price when booking is done (for reference)
     @booking.save!
     @sock.user_id = current_user.id # Transfer of ownership
