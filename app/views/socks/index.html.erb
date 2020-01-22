@@ -14,7 +14,7 @@
               <div class="card-body">
                 <div class="sock_card">
                   <%= image_tag "sock_card.png", alt: "Le Wagon", width: 200 %>
-                  <p class="card-text"> This sock belongs to <%= sock.user %></p>
+                  <p class="card-text"> This sock belongs to <%= sock.user.email %></p>
                 </div>
                   <% if sock.status == 'active' %>
                       <ul class="list-group list-group-flush">
@@ -53,7 +53,7 @@
             <div class="card-body">
               <div class="sock_card">
                 <%= image_tag "sock_card.png", alt: "Le Wagon", width: 200 %>
-                <p class="card-text"> This sock belongs to <%= sock.user %></p>
+                <p class="card-text"> This sock belongs to <%= sock.user.email %></p>
               </div>
                 <% if sock.status == 'active' %>
                     <ul class="list-group list-group-flush">
