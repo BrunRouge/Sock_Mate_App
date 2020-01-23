@@ -1,4 +1,3 @@
 <div class="container"><h3><b>Edit this sock:</b></h3>
   <%= render 'shared/new_edit_sock', sock: @sock %>
-  <p><button type="button" class="btn_small"> <%= link_to "Remove this sock from marketplace", status_hide_sock_path(@sock), method: :patch, data: { confirm: "Confirm removal of sock from marketplace" } %> </button></p>
 </div>
