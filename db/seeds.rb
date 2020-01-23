@@ -1,25 +1,25 @@
 puts 'Creating users...'
 
 User.create!({
-  email: 'Malekith@Naggaroth.us',
+  email: 'malekith@naggarond.us',
   password: '4000yearoldvirgin'
 })
 
 
 User.create!({
-  email: 'ChuckNorris@NorrisMail.Norris',
-  password: 'Chuck9001'
+  email: 'chucknorris@norrismail.norris',
+  password: 'chuck9001'
 })
 
 User.create!({
-  email: 'TheReaper@styx.hades',
-  password: 'DontJudgeMe404'
+  email: 'thereaper@styx.hades',
+  password: 'dontjudgeme404'
 })
 
 
 users = User.all
-socktextiles = ['silk', 'wool', 'cotton', 'wool/cotton mix', 'kashmir', 'spider-web', 'synthetic', 'straw', 'virgin hair', 'Jack Sparrow\'s backhair', 'duct tape']
-sockcolors = ['white', 'gray', 'orange', 'black', 'ginger', 'potato', 'red', 'green', 'blue', 'beige', 'pink', 'neon', 'psychedelic', 'brown', 'yellow', 'Kenny']
+socktextiles = ['silk', 'wool', 'cotton', 'wool/cotton mix', 'kashmir', 'spider-web', 'synthetic', 'straw', 'virgin\'s hair', 'tears of joy', 'duct tape']
+sockcolors = ['white', 'gray', 'orange', 'black', 'ginger', 'potato', 'red', 'green', 'blue', 'beige', 'pink', 'neon', 'psychedelic', 'brown', 'yellow', 'kenny']
 
 socktextiles.each do |string|
   string.capitalize!
