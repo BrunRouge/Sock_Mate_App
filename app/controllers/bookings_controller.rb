@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   def index
-    @my_bookings  = current_user.bookings
-    @my_sales = Booking.where(previousowner_id: current_user.id)
+    @my_bookings  = current_user.bookings.order!('created_at DESC')
+    @my_sales = Booking.where(previousowner_id: current_user.id).order!('created_at DESC')
   end
 
   def show
