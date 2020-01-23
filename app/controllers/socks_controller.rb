@@ -4,13 +4,13 @@ class SocksController < ApplicationController
   def index
     if current_user
       @my_socks = current_user.socks
-      @socks = Sock.all - @my_socks
+      @not_my_socks = Sock.all - @my_socks
     else
-      @my_socks = []
-      @socks = Sock.all
+      @not_my_socks = Sock.all.where(status: 'active')
     end
-    @any_socks = @my_socks.any?
+    @any_my_socks = @my_socks.any?
     @my_active_socks = @my_socks.where(status: 'active')
+    @other_active_socks = @not_my_socks
   end
 
   def show
