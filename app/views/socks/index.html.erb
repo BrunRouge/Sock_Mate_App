@@ -2,7 +2,7 @@
 <div class="container">
   <br>
   <br>
-  <% if @any_socks %>
+  <% if @any_my_socks %>
     <div class="card text-center">
       <h1>Your sock collection:</h1>
     </div>
@@ -36,21 +36,18 @@
 <div class="container">
   <br>
   <br>
-  <div class="row">
-    <% @socks.each do |sock| %>
-      <div class="card text-center">
-        <h1>Marketplace:</h1>
-      </div>
+  <div class="card text-center">
       <h5 class="card text-center"; style="font-size:500%"><strong>🧦 Socks for sale here! 🧦</strong></h5>
+    </div>
+  <div class="row">
+    <% @other_active_socks.each do |sock| %>
       <div class="col-6">
           <div class="card"; class="center" >
             <div class="card-body">
               <div class="sock_card">
                 <%= image_tag "sock_card.png", alt: "Le Wagon", width: 200 %>
-                <p class="card-text"> This sock belongs to <%= sock.user  %></p>
                 <p class="card-text"> This sock belongs to <%= sock.user.email %></p>
               </div>
-                <% if sock.status == 'active' %>
                     <ul class="list-group list-group-flush">
                       <li class="list-group-item"><strong>Textile</strong> : <%= sock.textile %></li>
                       <li class="list-group-item"><strong>Color</strong> : <%= sock.color %></li>
@@ -59,11 +56,6 @@
                     <div class="card-body">
                       <button type="button" class="btn_small">  <%= link_to 'Show sock', sock_path(sock), method: :get%> </button>
                     </div>
-                <% else %>
-                  <div class="card-body">
-                    <h5 class="card text-center"; style="font-size:200%"><strong> This sock already found a mate... </strong></h5>
-                  </div>
-                <% end %>
             </div>
           </div>
       </div>
