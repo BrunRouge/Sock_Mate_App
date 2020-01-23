@@ -1,5 +1,6 @@
 class SocksController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     if current_user
       @my_socks = current_user.socks
@@ -8,6 +9,8 @@ class SocksController < ApplicationController
       @my_socks = []
       @socks = Sock.all
     end
+    @any_socks = @my_socks.any?
+    @my_active_socks = @my_socks.where(status: 'active')
   end
 
   def show

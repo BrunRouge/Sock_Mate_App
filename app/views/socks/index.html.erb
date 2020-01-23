@@ -2,34 +2,32 @@
 <div class="container">
   <br>
   <br>
-  <% if @my_socks != [] %>
+  <% if @any_socks %>
     <div class="card text-center">
       <h1>Your sock collection:</h1>
     </div>
     <h5 class="card text-center"; style="font-size:500%">Your lonely socks</h5>
     <div class="row">
-      <% @my_socks.each do |sock| %>
-        <% if sock.status == 'active' %>
-          <div class="col-6">
-              <div class="card"; class="center" >
-                <div class="card-body">
-                  <div class="sock_card">
-                    <%= image_tag "sock_card.png", alt: "Le Wagon", width: 200 %>
-                    <p class="card-text"> This sock belongs to <%= sock.user %></p>
-                  </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item"><strong>Textile</strong> : <%= sock.textile %></li>
-                      <li class="list-group-item"><strong>Color</strong> : <%= sock.color %></li>
-                      <li class="list-group-item"><strong>Price</strong> : <%= sock.price.symbol %> <%= sock.price %></li>
-                    </ul>
-                    <div class="card-body">
-                      <button type="button" class="btn_small">  <%= link_to 'Show sock', sock_path(sock), method: :get%> </button>
-                      <button type="button" class="btn_small">  <%= link_to 'Edit sock', edit_sock_path(sock), method: :get%> </button>
-                    </div>
+      <% @my_active_socks.each do |sock| %>
+        <div class="col-6">
+            <div class="card"; class="center" >
+              <div class="card-body">
+                <div class="sock_card">
+                  <%= image_tag "sock_card.png", alt: "Le Wagon", width: 200 %>
+                  <p class="card-text"> This sock belongs to <%= sock.user %></p>
                 </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Textile</strong> : <%= sock.textile %></li>
+                    <li class="list-group-item"><strong>Color</strong> : <%= sock.color %></li>
+                    <li class="list-group-item"><strong>Price</strong> : <%= sock.price.symbol %> <%= sock.price %></li>
+                  </ul>
+                  <div class="card-body">
+                    <button type="button" class="btn_small">  <%= link_to 'Show sock', sock_path(sock), method: :get%> </button>
+                    <button type="button" class="btn_small">  <%= link_to 'Edit sock', edit_sock_path(sock), method: :get%> </button>
+                  </div>
               </div>
-          </div>
-        <% end %>
+            </div>
+        </div>
       <% end %>
     </div>
   <% end %>
@@ -50,6 +48,7 @@
               <div class="sock_card">
                 <%= image_tag "sock_card.png", alt: "Le Wagon", width: 200 %>
                 <p class="card-text"> This sock belongs to <%= sock.user  %></p>
+                <p class="card-text"> This sock belongs to <%= sock.user.email %></p>
               </div>
                 <% if sock.status == 'active' %>
                     <ul class="list-group list-group-flush">
