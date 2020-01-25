@@ -1,4 +1,5 @@
-<div class="container">
+<span class="border-0">
+  <div class="container">
   <br>
   <br>
   <% if @any_my_socks %>
@@ -13,7 +14,7 @@
               <div class="card-body">
                 <div class="sock_card">
                   <%= link_to image_tag("sock_card.png", alt: "Le Wagon", width: 200), sock_path(sock) %>
-                  <p class="card-text"> This sock belongs to <%= sock.user.email %></p>
+                  <p class="card-text"> This sock belongs to <strong><%= sock.user.email %></strong> </p>
                 </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item"><strong>Textile</strong> : <%= sock.textile %></li>
@@ -57,6 +58,7 @@
     <% end %>
   </div>
 </div>
+</span>
 
 <footer class="footer mt-auto py-3">
   <div class="container">
