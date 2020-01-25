@@ -10,12 +10,16 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(extended_booking_params)
-    @sock = Sock.find(params[:sock_id])
-    if payment_validation && transaction_validation
-      flash[:notice] = "Transaction complete. Congratulations on your aquisition!"
-      save_transaction
+    if @booking.user == current_user
+      @sock = Sock.find(params[:sock_id])
+      if payment_validation && transaction_validation
+        flash[:notice] = "Transaction complete. Congratulations on your aquisition!"
+        save_transaction
+      else
+        flash[:notice] = "Insufficient funds"
+      end
     else
-      flash[:notice] = "Insufficient funds"
+      flash[:notice] = "Please go hack Mark Zuckerberg instead."
     end
     redirect_to sock_path(@sock)
   end
@@ -33,8 +37,6 @@ class BookingsController < ApplicationController
   def find_booking
     @booking = Booking.find(params[:id])
   end
-
-  private
 
   def payment_validation # Add "Reverse/Rollback payment in case of failing transaction for whatever reason?"
     if current_user.funds >= @sock.price
