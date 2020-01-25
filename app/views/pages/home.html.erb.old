@@ -1,0 +1,39 @@
+<div class="container">
+  <div align="center" class="w3-container w3-red">
+    <br>
+    <br>
+  <div class="home_page">
+    <div>
+      <%= image_tag "hp_socks.jpg" %>
+      <button class="btn_hp"><%= link_to 'Check Our Selection Here!', socks_path, method: :get%> </button>
+    </div>
+  </div>
+  <div>
+    <div class="container">
+        <h1>Welcome to SockMate!</h1>
+          <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
+      </div>
+  </div>
+</div>
+
+<section class="banner-area">
+  <div class="container">
+    <div class="row fullscreen align-items-center justify-content-between">
+      <div class="col-lg-6 col-md-6 banner-left">
+        <h6>Who was a : </h6>
+        <h1>LONELY SOCK?</h1>
+        <p>
+          You will begin to realise why this exercise is called the Dickens Pattern with reference to the ghost showing Scrooge some different futures.
+        </p>
+        <a <%= link_to 'Check Our Selection Here!', socks_path, method: :get%> class="primary-btn text-uppercase">discover now</a>
+      </div>
+      <div class="col-lg-6 col-md-6 banner-right d-flex align-self-end">
+        <img class="img-fluid" src="../images/hp_socks.jpg" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
