@@ -1,1 +1,33 @@
 // Specific CSS for your home-page
+.home_page {
+  position: relative;
+  width: 100%;
+  font-family: "poppins";
+}
+
+/* Make the image responsive */
+.home_page img {
+  width: 150%;
+  height: auto;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.home_page .btn_hp {
+  position: absolute;
+  top: 120%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #1C0D37;
+  color: #FFF100;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.home_page .btn_hp a{
+  color: #FFF100;
+}
+

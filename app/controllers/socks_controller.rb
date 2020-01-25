@@ -3,13 +3,14 @@ class SocksController < ApplicationController
 
   def index
     if current_user
-      @my_socks = current_user.socks
-      @not_my_socks = Sock.all - @my_socks
+      @my_socks = current_user.socks.where(status: 'active').order(created_at: :desc)
+      @not_my_socks = Sock.where(status: 'active').order(created_at: :desc) - @my_socks
     else
-      @not_my_socks = Sock.all.where(status: 'active')
+      @my_socks = []
+      @not_my_socks = Sock.where(status: 'active').order(created_at: :desc)
     end
     @any_my_socks = @my_socks.any?
-    @my_active_socks = @my_socks.where(status: 'active')
+    @my_active_socks = @my_socks
     @other_active_socks = @not_my_socks
   end
 
@@ -37,7 +38,7 @@ class SocksController < ApplicationController
 
   def update
     @sock = Sock.find(find_sock.id)
-    if @sock.update(sock_params)
+    if @sock.update(sock_params) && @sock.user == current_user
       redirect_to sock_path(@sock)
     else
       render :new
@@ -46,9 +47,13 @@ class SocksController < ApplicationController
 
   def status_hide
     @sock = find_sock
-    @sock.status = "hidden"
-    @sock.save!
-    redirect_to socks_path
+    if current_user == @sock.user
+      @sock.status.hidden
+      @sock.save!
+      redirect_to socks_path
+    else
+      head :not_found
+    end
   end
 
   private

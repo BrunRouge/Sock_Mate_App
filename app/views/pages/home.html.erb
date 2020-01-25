@@ -1,12 +1,25 @@
-<div class="container">
-  <div align="center" class="w3-container w3-red">
-    <br>
-    <br>
-    <div>
-      <%= image_tag "socks.png" %>
+<section class="banner-area">
+  <div class="container">
+  <div class="home_page">
+    <div class="row fullscreen align-items-center justify-content-between">
+      <div class="col-lg-6 col-md-6 banner-left">
+        <h4>Who has never had a  </h4>
+        <h1>LONELY SOCK?</h1>
+        <p>
+          Discover other persons like you with exactly the same socks and buy your missing sock. You could even sell your sock if you don't like it and don't want to put effoerts in finding a new sock.
+          You'll only get richer of it ;)
+        </p>
+        <%= link_to 'Check Our Selection Here!', socks_path, method: :get, class:"btn_hp" %>
+      </div>
+      <div class="col-lg-6 col-md-6 banner-right d-flex align-self-end">
+       <%= image_tag "sock.png", class:"img" %>
+      </div>
     </div>
-    <div class="w3-container w3-blue">
-  <h1>Welcome to SockMate!</h1>
-  <h2><%= link_to 'Check Our Selection Here!', socks_path, method: :get%> </h2>
+    </section>
   </div>
 </div>
+
+
+
+
+
