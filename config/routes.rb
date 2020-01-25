@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/profile'
   devise_for :users
   root to: 'pages#home'
 
@@ -9,5 +10,6 @@ Rails.application.routes.draw do
     end
   end
   get 'bookings', to: 'bookings#index'
+  get 'profile/:id', to: 'users#profile'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

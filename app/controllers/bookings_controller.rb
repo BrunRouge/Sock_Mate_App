@@ -4,10 +4,6 @@ class BookingsController < ApplicationController
     @my_sales = Booking.where(previousowner_id: current_user.id).order!('created_at DESC')
   end
 
-  def show
-    @booking = find_booking
-  end
-
   def create
     @booking = Booking.new(extended_booking_params)
     if @booking.user == current_user
@@ -19,7 +15,7 @@ class BookingsController < ApplicationController
         flash[:notice] = "Insufficient funds"
       end
     else
-      flash[:notice] = "Please go hack Mark Zuckerberg instead."
+      head :not_found
     end
     redirect_to sock_path(@sock)
   end
@@ -32,10 +28,6 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.permit(:sock_id)
-  end
-
-  def find_booking
-    @booking = Booking.find(params[:id])
   end
 
   def payment_validation # Add "Reverse/Rollback payment in case of failing transaction for whatever reason?"
