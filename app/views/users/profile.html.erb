@@ -1,2 +1,40 @@
-<h1>Users#profile</h1>
-<p>Find me in app/views/users/profile.html.erb</p>
+<br>
+<div class="container">
+  <span class="text-muted">
+    <button type="button" class="block"> <%= link_to 'Go to sock marketplace', socks_path, method: :get%>
+  </span>
+</div>
+<br>
+<div class="container">
+  <span class="text-muted">
+    <button type="button" class="block"> <%= link_to 'Create new sock', new_sock_path(@sock), method: :get%>
+  </span>
+</div>
+
+<div class="container">
+  <h5 class="card"; style="font-size:250%"><i>My socks:</i></h5>
+  <div class="row">
+    <% @my_socks.each do |sock| %> <!-- Begin iteration -->
+    <div class="col-6">
+      <div class="card"; class="center" >
+        <div class="card-body">
+          <div class="sock_card">
+            <%= link_to image_tag("sock_card.png", alt: "Le Wagon", width: 200), sock_path(sock) %>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Textile</strong> : <%= sock.textile %></li>
+            <li class="list-group-item"><strong>Color</strong> : <%= sock.color %></li>
+            <li class="list-group-item"><strong>Size</strong> : <%= sock.size %></li>
+            <li class="list-group-item"><strong>Price</strong> : <%= sock.price.symbol %> <%= sock.price %></li>
+          </ul>
+          <br>
+          <button type="button" class="btn_small">  <%= link_to 'Show sock', sock_path(sock), method: :get%> </button>
+          <button type="button" class="btn_small">  <%= link_to 'Edit sock', edit_sock_path(sock), method: :get%> </button>
+          <button type="button" class="btn_small"> <%= link_to "Remove", status_hide_sock_path(sock), method: :patch, data: { confirm: "Confirm removal of sock from marketplace" } %> </button>
+        </div>
+      </div>
+    </div>
+    <% end %> <!-- End of iteration logic -->
+  </div>
+  <br>
+</div>

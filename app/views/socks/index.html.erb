@@ -13,7 +13,7 @@
             <div class="card"; class="center" >
               <div class="card-body">
                 <div class="sock_card">
-                  <%= image_tag "sock_card.png", alt: "Le Wagon", width: 200 %>
+                  <%= link_to image_tag("sock_card.png", alt: "Le Wagon", width: 200), sock_path(sock) %>
                   <p class="card-text"> This sock belongs to <%= sock.user.email %></p>
                 </div>
                   <ul class="list-group list-group-flush">
@@ -22,7 +22,6 @@
                     <li class="list-group-item"><strong>Price</strong> : <%= sock.price.symbol %> <%= sock.price %></li>
                   </ul>
                   <div class="card-body">
-                    <button type="button" class="btn_small">  <%= link_to 'Show sock', sock_path(sock), method: :get%> </button>
                     <button type="button" class="btn_small">  <%= link_to 'Edit sock', edit_sock_path(sock), method: :get%> </button>
                   </div>
               </div>
@@ -45,17 +44,14 @@
           <div class="card"; class="center" >
             <div class="card-body">
               <div class="sock_card">
-                <%= image_tag "sock_card.png", alt: "Le Wagon", width: 200 %>
+                <%= link_to image_tag("sock_card.png", alt: "Le Wagon", width: 200), sock_path(sock) %>
                 <p class="card-text"> This sock belongs to <%= sock.user.email %></p>
               </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item"><strong>Textile</strong> : <%= sock.textile %></li>
-                      <li class="list-group-item"><strong>Color</strong> : <%= sock.color %></li>
-                      <li class="list-group-item"><strong>Price</strong> : <%= sock.price.symbol %> <%= sock.price %></li>
-                    </ul>
-                    <div class="card-body">
-                      <button type="button" class="btn_small">  <%= link_to 'Show sock', sock_path(sock), method: :get%> </button>
-                    </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Textile</strong> : <%= sock.textile %></li>
+                <li class="list-group-item"><strong>Color</strong> : <%= sock.color %></li>
+                <li class="list-group-item"><strong>Price</strong> : <%= sock.price.symbol %> <%= sock.price %></li>
+              </ul>
             </div>
           </div>
       </div>

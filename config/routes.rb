@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     end
   end
   get 'bookings', to: 'bookings#index'
+  get 'profile/:id', to: 'users#profile'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
