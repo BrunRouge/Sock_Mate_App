@@ -6,10 +6,12 @@
     <li class="list-group-item"><strong>My account balance</strong> : <%= current_user.funds %></li>
     <li class="list-group-item"><strong>Socks acquired through SockMate</strong> : <%=  %></li>
     </ul>
-  <button type="button" class="btn_small"> <%= link_to 'Create new sock', new_sock_path(@sock), method: :get%> </button>
-  <button type="button" class="btn_small">  <%= link_to 'Show sock', socks_path, method: :get%> </button>
+    <button type="button" class="btn_small"> <%= link_to 'Create new sock', new_sock_path(@sock), method: :get%> </button>
+    <button type="button" class="btn_small">  <%= link_to 'Show sock', socks_path, method: :get%> </button>
   </div>
 </div>
+
+<br>
 
 <div class="container">
   <h5 class="card"; style="font-size:250%"><i>My socks:</i></h5>
