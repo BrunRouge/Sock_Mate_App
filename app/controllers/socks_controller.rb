@@ -63,7 +63,7 @@ class SocksController < ApplicationController
   end
 
   def sock_params
-    params.require(:sock).permit(:size, :price, :textile, :color)
+    params.require(:sock).permit(:size, :price, :textile, :color, :photo)
   end
 
   def find_sock
