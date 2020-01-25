@@ -16,7 +16,7 @@
                   <% if sock.photo.attached? %>
                   <%= cl_image_tag sock.photo.key, height: 300, width: 400, crop: :fill %>
                   <% else %>
-                  <%= cl_image_tag("non_existing_id.png", :default_image => "default_image.jpg") %>
+                  <%= image_tag "dirty_sock.jpg", alt: "Le Wagon", width: 200 %>
                   <% end %>
                   <p class="card-text"> This sock belongs to <%= sock.user.email %></p>
                 </div>
@@ -52,7 +52,7 @@
                 <% if sock.photo.attached? %>
                   <%= cl_image_tag sock.photo.key, height: 300, width: 400, crop: :fill %>
                   <% else %>
-                  <%= cl_image_tag("non_existing_id.png", :default_image => "default_image.jpg") %>
+                  <%= image_tag "dirty_sock.jpg", alt: "Le Wagon", width: 200 %>
                   <% end %>
                 <p class="card-text"> This sock belongs to <%= sock.user.email %></p>
               </div>
