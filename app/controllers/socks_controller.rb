@@ -6,6 +6,7 @@ class SocksController < ApplicationController
       @my_socks = current_user.socks
       @not_my_socks = Sock.all - @my_socks
     else
+      @my_socks = []
       @not_my_socks = Sock.all.where(status: 'active').order(created_at: :desc)
     end
     @any_my_socks = @my_socks.any?
