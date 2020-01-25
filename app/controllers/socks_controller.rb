@@ -51,7 +51,7 @@ class SocksController < ApplicationController
       @sock.save!
       redirect_to socks_path
     else
-      flash[:notice] = "Only the owner of this sock may remove it from the marketplace. You could consider purchasing it :)"
+      flash[:notice] = "Only the owner of this sock may remove it from the marketplace. You should consider purchasing it :)"
     end
   end
 
