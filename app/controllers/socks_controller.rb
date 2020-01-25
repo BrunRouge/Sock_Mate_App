@@ -48,7 +48,7 @@ class SocksController < ApplicationController
   def status_hide
     @sock = find_sock
     if current_user == @sock.user
-      @sock.status.hidden
+      @sock.hidden!
       @sock.save!
       redirect_to socks_path
     else
