@@ -1,15 +1,14 @@
 <br>
 <div class="container">
-  <span class="text-muted">
-    <button type="button" class="block"> <%= link_to 'Go to sock marketplace', socks_path, method: :get%>
-  </span>
+  <button type="button" class="btn btn_small"> <%= link_to 'Create new sock', new_sock_path(@sock), method: :get%> </button>
+  <button type="button" class="btn btn_small">  <%= link_to 'Show sock', socks_path, method: :get%> </button>
 </div>
 <br>
 <div class="container">
   <span class="text-muted">
-    <button type="button" class="block"> <%= link_to 'Create new sock', new_sock_path(@sock), method: :get%>
   </span>
 </div>
+
 
 <div class="container">
   <h5 class="card"; style="font-size:250%"><i>My socks:</i></h5>

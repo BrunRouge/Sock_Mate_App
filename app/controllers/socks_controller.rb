@@ -47,11 +47,11 @@ class SocksController < ApplicationController
   def status_hide
     @sock = find_sock
     if current_user == @sock.user
-      @sock.status = "hidden"
+      @sock.status.hidden
       @sock.save!
       redirect_to socks_path
     else
-      flash[:notice] = "Only the owner of this sock may remove it from the marketplace. You should consider purchasing it :)"
+      head :not_found
     end
   end
 

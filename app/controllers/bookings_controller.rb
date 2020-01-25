@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
         flash[:notice] = "Insufficient funds"
       end
     else
-      flash[:notice] = "Please go hack Mark Zuckerberg instead."
+      head :not_found
     end
     redirect_to sock_path(@sock)
   end
