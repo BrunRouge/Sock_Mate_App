@@ -1,8 +1,8 @@
 puts 'Creating users...'
 
 User.create!({
-  email: 'malekith@naggarond.us',
-  password: '4000yearoldvirgin'
+  email: 'malekith@4000yearoldvirgin.us',
+  password: 'buffwitchelves'
 })
 
 

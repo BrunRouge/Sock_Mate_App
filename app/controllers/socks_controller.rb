@@ -6,10 +6,10 @@ class SocksController < ApplicationController
       @my_socks = current_user.socks
       @not_my_socks = Sock.all - @my_socks
     else
-      @not_my_socks = Sock.all.where(status: 'active')
+      @not_my_socks = Sock.all.where(status: 'active').order(created_at: :desc)
     end
     @any_my_socks = @my_socks.any?
-    @my_active_socks = @my_socks.where(status: 'active')
+    @my_active_socks = @my_socks.where(status: 'active').order(created_at: :desc)
     @other_active_socks = @not_my_socks
   end
 
@@ -37,7 +37,7 @@ class SocksController < ApplicationController
 
   def update
     @sock = Sock.find(find_sock.id)
-    if @sock.update(sock_params)
+    if @sock.update(sock_params) && @sock.user == current_user
       redirect_to sock_path(@sock)
     else
       render :new
@@ -46,9 +46,13 @@ class SocksController < ApplicationController
 
   def status_hide
     @sock = find_sock
-    @sock.status = "hidden"
-    @sock.save!
-    redirect_to socks_path
+    if current_user == @sock.user
+      @sock.status = "hidden"
+      @sock.save!
+      redirect_to socks_path
+    else
+      flash[:notice] = "Only the owner of this sock may remove it from the marketplace. You could consider purchasing it :)"
+    end
   end
 
   private
