@@ -1,4 +1,4 @@
-<%= form_for(@sock) do |f| %>
+<%= simple_form_for(@sock) do |f| %>
   <p><%= f.label :textile %></p>
   <p><%= f.text_field :textile %></p>
   <p><%= f.label :color %></p>
@@ -7,6 +7,7 @@
   <p><%= f.text_field :size %></p>
   <p><%= f.label :price %> in <%= @sock.price.symbol %></p>
   <p><%= f.text_field :price %></p>
+  <p><%= f.input :photo, as: :file %></p>
   <%= f.submit %>
 <% end %>
 

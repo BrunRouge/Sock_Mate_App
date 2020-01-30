@@ -9,7 +9,11 @@
             <div class="card"; class="center" >
               <div class="card-body">
                 <div class="sock_card">
-                  <%= image_tag "sock_card.png", alt: "Le Wagon", width: 200 %>
+                  <% if @sock.photo.attached? %>
+                  <%= cl_image_tag @sock.photo.key, height: 300, width: 400, crop: :fill %>
+                  <% else %>
+                  <%= image_tag "dirty_sock.jpg", alt: "Le Wagon", width: 200 %>
+                  <% end %>
                   <p class="card-text"> This sock belongs to <%= @owner.email %></p>
                 </div>
                       <ul class="list-group list-group-flush">
