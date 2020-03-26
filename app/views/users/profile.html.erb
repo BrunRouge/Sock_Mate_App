@@ -1,8 +1,8 @@
 <br>
-<div class="container" style="width: 37%">
+<div class="container" style="width: 40%">
   <div class="col-12">
     <h1 class="card text-center"; style="font-size:250%"><b>Welcome, <%= current_user.email %>!</b></h1>
-    <%= image_tag "avatar_example.jpg", class: "avatar-full mx-auto d-block", alt: "My spry mug" %>
+    <%= image_tag "avatar_example.png", class: "avatar-full mx-auto d-block", alt: "My spry mug" %>
     <ul class="list-group list-group-flush">
     <li class="list-group-item"><strong>My account balance</strong> : <%= current_user.funds %></li>
     <li class="list-group-item"><strong>Socks acquired through SockMate</strong> : <%= @my_acquired_socks %></li>
