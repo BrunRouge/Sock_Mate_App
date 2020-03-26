@@ -28,7 +28,7 @@
                             <p><button type="button" class="btn_small"> <%= link_to "Remove this sock from marketplace", status_hide_sock_path(@sock), method: :patch, data: { confirm: "Confirm removal of sock from marketplace" } %> </button></p>
                           <% end %>
                           <% if @owner.id != current_user.id %>
-                            <p><%= link_to "Purchase this wonderful piece of clothing", sock_bookings_path(@sock), method: :post, data: { confirm: "Confirm acquisition of item" } %></p>
+                            <button type="button" class="btn_small"><%= link_to "Purchase this wonderful piece of clothing", sock_bookings_path(@sock), method: :post, data: { confirm: "Confirm acquisition of item" } %></button>
                           <% end %>
                         <% end %>
                       </div>
